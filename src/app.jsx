@@ -1,4 +1,14 @@
+var MyComponent = React.createClass({
+  render: function(){
+    return (
+      <div className="header">
+        <div className="search-icon">search</div>
+      </div>
+    );
+  }
+});
+
 ReactDOM.render(
-  <h1>Hello, React</h1>,
+  <MyComponent/>,
   document.getElementById('app')
 );

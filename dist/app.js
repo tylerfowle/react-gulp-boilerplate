@@ -1,7 +1,19 @@
-'use strict';
+"use strict";
 
-ReactDOM.render(React.createElement(
-  'h1',
-  null,
-  'Hello, React'
-), document.getElementById('app'));
+var MyComponent = React.createClass({
+  displayName: "MyComponent",
+
+  render: function render() {
+    return React.createElement(
+      "div",
+      { className: "header" },
+      React.createElement(
+        "div",
+        { className: "search-icon" },
+        "search"
+      )
+    );
+  }
+});
+
+ReactDOM.render(React.createElement(MyComponent, null), document.getElementById('app'));
