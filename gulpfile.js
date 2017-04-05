@@ -2,7 +2,7 @@ var gulp        = require('gulp');
 var gutil       = require('gulp-util');
 var babel       = require('gulp-babel');
 var browserSync = require('browser-sync');
-
+var eslint      = require('gulp-eslint');
 
 gulp.task('browser-sync', function() {
   browserSync.init({
@@ -18,12 +18,18 @@ gulp.task('browser-sync', function() {
 
 gulp.task('js', function () {
   return gulp.src('./src/app.jsx')
+  .pipe(eslint())
   .pipe(babel({
     presets: ["react", "es2015"]
   }))
   .pipe(gulp.dest('./dist'));
 });
 
+gulp.task('js-watch', ['js'], function (done) {
+    browserSync.reload();
+    done();
+});
+
 gulp.task('default', ['browser-sync'], function() {
-  gulp.watch('./src/app.jsx', ['js']);
+  gulp.watch('./src/app.jsx', ['js-watch']);
 });
