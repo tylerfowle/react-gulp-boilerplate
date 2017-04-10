@@ -1,12 +1,12 @@
-var MyComponent = React.createClass({
-  render: function(){
+class MyComponent extends React.Component {
+  render(){
     return (
-      <div className="header">
-        <div className="search-icon">search</div>
+      <div className="hello-world">
+        Hello World
       </div>
-    );
+    )
   }
-});
+}
 
 ReactDOM.render(
   <MyComponent/>,

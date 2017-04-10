@@ -3,6 +3,7 @@ var gutil       = require('gulp-util');
 var babel       = require('gulp-babel');
 var browserSync = require('browser-sync');
 var eslint      = require('gulp-eslint');
+var notify       = require('gulp-notify');
 
 gulp.task('browser-sync', function() {
   browserSync.init({
@@ -21,6 +22,9 @@ gulp.task('js', function () {
   .pipe(eslint())
   .pipe(babel({
     presets: ["react", "es2015"]
+  }))
+  .on("error", notify.onError(function (error) {
+    return "Error - Sass: " + error.message;
   }))
   .pipe(gulp.dest('./dist'));
 });
